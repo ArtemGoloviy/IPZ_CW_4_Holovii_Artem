@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import ua.edu.lntu.cw_4.Task
 import ua.edu.lntu.cw_4.ui.theme.IPZ_CW_4_Holovii_ArtemTheme
 
 @Composable
@@ -37,13 +38,11 @@ fun TaskListScreen(modifier: Modifier = Modifier, navController: NavController) 
                     .padding(8.dp),
                 shape = RoundedCornerShape(8.dp),
                 colors = CardDefaults.cardColors(
-                    containerColor = if (it.isActive) Color.Red else Color.Green
+                    containerColor = it.getColor()
                 )
             ) {
                 Column {
                     Text(text = it.name, style = TextStyle(fontSize = 36.sp))
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(text = it.description)
                 }
             }
         }
@@ -52,7 +51,7 @@ fun TaskListScreen(modifier: Modifier = Modifier, navController: NavController) 
 
 @Preview
 @Composable
-fun TaskListScreen() {
+fun TaskListScreenPreview() {
     IPZ_CW_4_Holovii_ArtemTheme {
         TaskListScreen(navController = NavController(LocalContext.current))
     }
